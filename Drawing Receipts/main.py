@@ -38,7 +38,7 @@ class ReceiptView:
             y_offset += 0.02 * img.height
         # Save the image as a PNG file
         img.save("receipt.png")
-
+    
 class ReceiptModel:
     def __init__(self, time, location_name, location_address, items):
         self.time = time
