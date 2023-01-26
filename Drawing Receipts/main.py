@@ -13,19 +13,19 @@ class ReceiptView:
         # Create a blank image with the desired width and resolution
         img = Image.new("RGB", (self.width, self.height), color=self.color)
         # Create a drawing context
-        font = ImageFont.truetype("arial.ttf", 500)
+        font = ImageFont.truetype("arial.ttf", 200)
         draw = ImageDraw.Draw(img)
         # Add the time to the image
-        draw.text((50, 100), receipt_model.time, font=font, fill=(10, 0, 0))
+        draw.text((0.1*img.width, 0.01*img.height), receipt_model.time, font=font, fill=(10, 0, 0))
         # Add the location name to the image
-        draw.text((50, 5000), receipt_model.location_name, font=font, fill=(0, 0, 0))
+        draw.text((0.1*img.width, 0.03*img.height), receipt_model.location_name, font=font, fill=(0, 0, 0))
         # Add the location address to the image
-        draw.text((50, 20000), receipt_model.location_address, font=font, fill=(0, 0, 0))
+        draw.text((0.1*img.width, 0.05*img.height), receipt_model.location_address, font=font, fill=(0, 0, 0))
         # Add the items to the image
-        y_offset = 25000
+        y_offset = 0.07*img.height
         for item in receipt_model.items:
-            draw.text((0, y_offset), item, font=font, fill=(0, 0, 0))
-            y_offset += 5000
+            draw.text((0.1*img.width, y_offset), item, font=font, fill=(0, 0, 0))
+            y_offset += 0.02*img.height
         # Save the image as a PNG file
         img.save("receipt.png")
 
